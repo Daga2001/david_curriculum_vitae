@@ -285,11 +285,10 @@ const Nav = ({ isHome }) => {
     </div>
   );
 
-  const handleResumeDownload = (e) => {
+  const handleResumeDownload = async (e) => {
     e.preventDefault();
-    import('../utils/generatePDF').then(({ generateResumePDF }) => {
-      generateResumePDF();
-    });
+    const { generateResumePDF } = await import('../utils/generatePDF');
+    await generateResumePDF();
   };
 
   const ResumeLink = (

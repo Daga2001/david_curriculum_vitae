@@ -346,11 +346,10 @@ const Menu = () => {
               </ol>
             )}
 
-            <a href="#" className="resume-link" onClick={(e) => {
+            <a href="#" className="resume-link" onClick={async (e) => {
               e.preventDefault();
-              import('../utils/generatePDF').then(({ generateResumePDF }) => {
-                generateResumePDF();
-              });
+              const { generateResumePDF } = await import('../utils/generatePDF');
+              await generateResumePDF();
             }}>
               Download My Resume!
             </a>
