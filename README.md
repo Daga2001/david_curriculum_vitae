@@ -66,7 +66,3 @@ npx gatsby develop
 ## 👏 Credits
 
 This project is heavily inspired by the work of [Brittany Chiang](https://github.com/bchiang7/v4). Special thanks to her for the design and structure, which was an excellent foundation to build my own personal portfolio.
-
-
-
-4
