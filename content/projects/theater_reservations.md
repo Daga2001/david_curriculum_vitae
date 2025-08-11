@@ -4,7 +4,7 @@ title: 'Theater Reservations Simulator'
 github: 'https://github.com/Daga2001/theater_reservations_php'
 external: 'https://github.com/Daga2001/theater_reservations_php'
 tech:
-  - PHP
+  - Php
 company: ''
 showInProjects: true
 ---

@@ -347,7 +347,7 @@ const Featured = () => {
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
+        Some Things I’ve Built Or Contributed To
       </h2>
 
       <StyledProjectsGrid>
@@ -355,7 +355,7 @@ const Featured = () => {
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover } = frontmatter;
-            const image = getImage(cover);
+            const image = cover ? getImage(cover) : null;
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -395,11 +395,13 @@ const Featured = () => {
                   </div>
                 </div>
 
-                <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
-                    <GatsbyImage image={image} alt={title} className="img" />
-                  </a>
-                </div>
+                {image && (
+                  <div className="project-image">
+                    <a href={external ? external : github ? github : '#'}>
+                      <GatsbyImage image={image} alt={title} className="img" />
+                    </a>
+                  </div>
+                )}
               </StyledProject>
             );
           })}

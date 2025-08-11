@@ -12,4 +12,4 @@ url: 'https://www.tsitecnologia.com.co/'
 - Build and integrate AI models for data imputation, analysis, and automation within company-specific applications.
 - Develop scalable full-stack applications with Angular, .Net Core, .Net Framework and Node.js, ensuring high performance and maintainability.
 - Collaborate with cross-functional teams to translate business requirements into technical solutions.
-- Design and develop relational databases for leading financial institutions in Colombia — including Banco de Occidente, Bancóldex, Banco Santander, and Bold — with a focus on performance and scalability.
+- Design and develop relational databases for web applications dedicated to leading financial institutions in Colombia — including Banco de Occidente, Bancóldex, Banco Santander, and Bold — with a focus on performance and scalability.

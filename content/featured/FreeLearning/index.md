@@ -6,7 +6,7 @@ github: ''
 external: 'https://free-learning-col.vercel.app/'
 tech:
   - HTML
-  - CSS
+  - Css
   - JavaScript
 ---
 
