@@ -10,6 +10,7 @@ export const generateResumePDF = async () => {
     location: 'Cali, Valle del Cauca, Colombia',
     linkedin: 'https://www.linkedin.com/in/david-alberto-guzm%C3%A1n-ardila-35417a220/',
     github: 'https://github.com/Daga2001',
+    anexes: 'https://drive.google.com/drive/folders/11HETfasREel5kZgTxfvZatfKrITk8M72?usp=drive_link',
     
     summary: 'Experienced Software Engineer specializing in cloud-based applications for the financial sector using AWS. Expert in implementing secure software solutions with cybersecurity best practices and ISO 27001 standards. Passionate about leveraging AI and machine learning to drive innovation, improve operational efficiency, and enhance decision-making in financial systems. My goal is to design intelligent, scalable, and secure systems that make a real-world impact.',
     
@@ -22,18 +23,19 @@ export const generateResumePDF = async () => {
         responsibilities: [
           'Design, develop, and maintain cloud-based applications for the financial sector using AWS',
           'Implement secure software solutions aligned with cybersecurity best practices and ISO 27001 standards',
-          'Build and integrate AI models for data imputation, analysis, and automation',
-          'Develop scalable full-stack applications with Angular, .Net Core, .Net Framework and Node.js',
-          'Design and develop relational databases for leading financial institutions in Colombia'
+          'Build and integrate AI models for data imputation, analysis, and automation within company-specific applications',
+          'Develop scalable full-stack applications with Angular, .Net Core, .Net Framework and Node.js, ensuring high performance and maintainability',
+          'Collaborate with cross-functional teams to translate business requirements into technical solutions.',
+          'Design and develop relational databases for web applications dedicated to leading financial institutions in Colombia'
         ]
       }
     ],
     
     skills: [
-      'JavaScript', 'TypeScript', 'Python', 'C#', 'Java',
-      'React', 'Angular', 'Node.js', '.NET Core',
-      'AWS', 'Docker', 'PostgreSQL', 'MongoDB',
-      'Git', 'CI/CD', 'Microservices', 'REST APIs'
+      'Machine Learning', 'Deep Learning', 'English (B1)', 'Critical Thinking', 
+      'Communication', 'React', 'Angular', 'Generative AI',
+      'AWS', 'Docker', 'PostgreSQL', 'Sql Server',
+      'PyTorch', 'Django', 'REST APIs'
     ],
     
     projects: [
@@ -46,7 +48,12 @@ export const generateResumePDF = async () => {
         name: 'SIREG',
         description: 'Regulatory Reporting System for Financial Entities in Colombia',
         technologies: ['ASP.NET', 'VB.NET', 'jQuery', 'SQL Server']
-      }
+      },
+      {
+        name: 'Freelearning',
+        description: 'An educational platform designed for schools to help children improve soft and basic skills through interactive and entertaining games.',
+        technologies: ['Html', 'Css', 'JavaScript']
+      },
     ],
     
     education: [
@@ -68,7 +75,7 @@ export const generateResumePDF = async () => {
   };
 
   const doc = new jsPDF();
-  const primaryColor = [64, 255, 218]; // Brighter green
+  const primaryColor = [0, 168, 120]; // Darker green-teal
   const darkColor = [15, 23, 42]; // Darker navy
   const accentColor = [30, 41, 59]; // Slate
   const lightGray = [248, 250, 252]; // Very light gray
@@ -138,10 +145,15 @@ export const generateResumePDF = async () => {
   doc.text(`Phone: ${resumeData.phone}`, 25, yPosition + 8);
   doc.text(`Location: ${resumeData.location}`, 25, yPosition + 13);
   
+  const Offset = 3.2
   doc.setTextColor(0, 102, 204); // hyperlink blue
-  doc.textWithLink('LinkedIn: David Guzmán', 110, yPosition + 6, { url: resumeData.linkedin });
+  doc.textWithLink('LinkedIn: David Guzmán', 110, yPosition + Offset, { url: resumeData.linkedin });
+  
   doc.setTextColor(0, 102, 204); // hyperlink blue
-  doc.textWithLink('GitHub: Daga2001', 110, yPosition + 11, { url: resumeData.github });
+  doc.textWithLink('GitHub: Daga2001', 110, yPosition + Offset + 5, { url: resumeData.github });
+
+  doc.setTextColor(0, 102, 204); // hyperlink blue
+  doc.textWithLink('Anexes: Certificates & More', 110, yPosition + Offset + 10, { url: resumeData.anexes });
   
   yPosition += 28;
   
@@ -238,12 +250,12 @@ export const generateResumePDF = async () => {
       
       doc.setFontSize(7);
       doc.setTextColor(0, 0, 0);
-      job.responsibilities.slice(0, 3).forEach(resp => {
+      job.responsibilities.slice(0, job.responsibilities.length-1).forEach(resp => {
         const respLines = doc.splitTextToSize(`• ${resp}`, columnWidth - 6);
         doc.text(respLines, x + 3, currentY);
         currentY += respLines.length * 3;
       });
-      currentY += 5;
+      currentY += -3;
     });
     return currentY;
   });
@@ -259,7 +271,7 @@ export const generateResumePDF = async () => {
       const col = index % 2;
       
       doc.setFillColor(...primaryColor);
-      doc.rect(x + 3 + col * 35, currentY + row * 6, 32, 4, 'F');
+      doc.rect(x + 3 + col * 35, currentY + row * 6 - 0.4, 32, 4, 'F');
       
       doc.setTextColor(...darkColor);
       doc.setFont('helvetica', 'bold');
@@ -270,11 +282,16 @@ export const generateResumePDF = async () => {
   }, true);
   
   // Left Column - Projects
-  addSection('KEY PROJECTS', (x, y) => {
+  addSection('PROJECTS', (x, y) => {
     let currentY = y;
     resumeData.projects.forEach(project => {
+      doc.setFontSize(7);
+      doc.setFont('helvetica', 'normal');
+      const descLines = doc.splitTextToSize(project.description, columnWidth - 6);
+      const projectHeight = 12 + (descLines.length * 3);
+      
       doc.setFillColor(...lightGray);
-      doc.rect(x, currentY - 2, columnWidth, 18, 'F');
+      doc.rect(x, currentY - 2, columnWidth, projectHeight, 'F');
       
       doc.setFontSize(9);
       doc.setFont('helvetica', 'bold');
@@ -284,10 +301,15 @@ export const generateResumePDF = async () => {
       doc.setFontSize(7);
       doc.setFont('helvetica', 'normal');
       doc.setTextColor(...accentColor);
-      const descLines = doc.splitTextToSize(project.description, columnWidth - 6);
       doc.text(descLines, x + 3, currentY + 6);
       
-      currentY += 5;
+      // Add technologies in very small font
+      doc.setFontSize(6);
+      doc.setTextColor(...mediumGray);
+      const techText = project.technologies.join(', ');
+      doc.text(techText, x + 3, currentY + 6 + (descLines.length * 3) + 2);
+      
+      currentY += projectHeight + 3;
     });
     return currentY;
   });
