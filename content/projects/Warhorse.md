@@ -6,7 +6,7 @@ external: 'https://github.com/Daga2001/WarHorse'
 tech:
   - JavaScript
   - HTML
-  - CSS
+  - Css
 company: ''
 showInProjects: true
 ---

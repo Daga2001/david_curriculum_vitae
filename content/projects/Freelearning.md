@@ -6,7 +6,7 @@ external: 'https://free-learning-col.vercel.app/'
 tech:
   - JavaScript
   - HTML
-  - CSS
+  - Css
 company: ''
 showInProjects: true
 ---
