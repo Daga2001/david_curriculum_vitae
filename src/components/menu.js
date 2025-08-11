@@ -152,6 +152,86 @@ const StyledSidebar = styled.aside`
     padding: 18px 50px;
     margin: 10% auto 0;
     width: max-content;
+    position: relative;
+    background: linear-gradient(45deg, #ff6b35, #f7931e, #ffcc02, #ff6b35);
+    background-size: 400% 400%;
+    animation: flameGradient 3s ease infinite, pulse 2s ease-in-out infinite alternate;
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.6), 0 0 40px rgba(255, 107, 53, 0.4),
+      0 0 60px rgba(255, 107, 53, 0.2);
+    border: 2px solid #ff6b35;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      animation: sparkle 4s linear infinite;
+      pointer-events: none;
+    }
+
+    &:after {
+      content: '🔥';
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 20px;
+      animation: flicker 1.5s ease-in-out infinite alternate;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255, 107, 53, 0.8), 0 0 60px rgba(255, 107, 53, 0.6),
+        0 0 90px rgba(255, 107, 53, 0.4);
+      animation: flameGradient 1s ease infinite, pulse 0.5s ease-in-out infinite alternate;
+    }
+  }
+
+  @keyframes flameGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes sparkle {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes flicker {
+    0% {
+      opacity: 1;
+      transform: rotate(-5deg) scale(1);
+    }
+    100% {
+      opacity: 0.7;
+      transform: rotate(5deg) scale(1.1);
+    }
   }
 `;
 
@@ -267,7 +347,7 @@ const Menu = () => {
             )}
 
             <a href="/resume.pdf" className="resume-link">
-              Resume
+              Download My Resume!
             </a>
           </nav>
         </StyledSidebar>
