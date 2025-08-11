@@ -27,6 +27,14 @@ This repository is a personal portfolio site, showcasing my skills, projects, an
    ```sh
    npm start
    ```
+**NOTE:** If you encounter issues while running the application, try the following steps to clear the cache and restart your development server:
+```sh
+npx gatsby clean
+```
+This command removes the `.cache` folder. You’ll need to regenerate it before running:
+```sh
+npx gatsby develop
+```
 
 ## 🚀 Building and Running for Production
 
