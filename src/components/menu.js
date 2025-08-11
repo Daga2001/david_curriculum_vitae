@@ -346,7 +346,12 @@ const Menu = () => {
               </ol>
             )}
 
-            <a href="/resume.pdf" className="resume-link">
+            <a href="#" className="resume-link" onClick={(e) => {
+              e.preventDefault();
+              import('../utils/generatePDF').then(({ generateResumePDF }) => {
+                generateResumePDF();
+              });
+            }}>
               Download My Resume!
             </a>
           </nav>

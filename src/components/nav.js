@@ -285,8 +285,15 @@ const Nav = ({ isHome }) => {
     </div>
   );
 
+  const handleResumeDownload = (e) => {
+    e.preventDefault();
+    import('../utils/generatePDF').then(({ generateResumePDF }) => {
+      generateResumePDF();
+    });
+  };
+
   const ResumeLink = (
-    <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+    <a className="resume-button" href="#" onClick={handleResumeDownload}>
       Download My Resume!
     </a>
   );
