@@ -125,7 +125,20 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
+  const skills = [
+    'Python',
+    'TensorFlow',
+    'PyTorch',
+    'scikit-learn',
+    'Pandas',
+    'React',
+    'JavaScript',
+    'Next.js',
+    'React',
+    'Node.js',
+    'AWS',
+    'Google Cloud',
+  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -135,30 +148,33 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Brittany and I enjoy creating things that live on the internet. My
-              interest in web development started back in 2012 when I decided to try editing custom
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot
-              about HTML &amp; CSS!
+              Hello! My name is David Alberto Guzmán and I’m passionate about designing intelligent,
+              secure solutions that make a real-world impact. My journey into software development
+              began during my university years, when I discovered how technology could be applied to
+              solve complex challenges in security, data analysis, and artificial intelligence — an
+              experience that deepened my skills in programming, critical thinking, and innovative
+              problem-solving.
             </p>
 
             <p>
-              Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://us.mullenlowe.com/">an advertising agency</a>,{' '}
-              <a href="https://starry.com/">a start-up</a>,{' '}
-              <a href="https://www.apple.com/">a huge corporation</a>, and{' '}
-              <a href="https://scout.camd.northeastern.edu/">a student-led design studio</a>. My
-              main focus these days is building accessible, inclusive products and digital
-              experiences at <a href="https://upstatement.com/">Upstatement</a> for a variety of
-              clients.
-            </p>
-
-            <p>
-              I also recently{' '}
-              <a href="https://www.newline.co/courses/build-a-spotify-connected-app">
-                launched a course
+              Fast-forward to today, I’ve had the privilege of working at{' '}
+              <a href="https://www.tsitecnologia.com.co/" target="_blank" rel="noreferrer">
+                TSI S.A.S.
+              </a>
+              , developing cloud-based applications for the financial sector, and contributing to
+              innovative projects at the{' '}
+              <a
+                href="https://eisc.univalle.edu.co/index.php/grupos-investigacion/multimedia-y-vision-por-computador"
+                target="_blank"
+                rel="noreferrer">
+                Multimedia and Computer Vision Laboratory
               </a>{' '}
-              that covers everything you need to build a web app with the Spotify API using Node
-              &amp; React.
+              of{' '}
+              <a href="https://www.univalle.edu.co/" target="_blank" rel="noreferrer">
+                Universidad del Valle
+              </a>
+              . My current focus is on creating AI-driven systems that combine security,
+              scalability, and efficiency.
             </p>
 
             <p>Here are a few technologies I’ve been working with recently:</p>

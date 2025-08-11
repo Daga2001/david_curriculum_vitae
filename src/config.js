@@ -1,26 +1,26 @@
 module.exports = {
-  email: 'brittany.chiang@gmail.com',
+  email: 'davidalbertoguz@gmail.com',
 
   socialMedia: [
     {
       name: 'GitHub',
-      url: 'https://github.com/bchiang7',
+      url: 'https://github.com/Daga2001',
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/bchiang7',
+      url: 'https://www.instagram.com/david.alberto.01/',
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com/bchiang7',
+      url: 'https://x.com/DProg0101',
     },
     {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/bchiang7',
+      url: 'https://www.linkedin.com/in/david-alberto-guzm%C3%A1n-ardila-35417a220/',
     },
     {
-      name: 'Codepen',
-      url: 'https://codepen.io/bchiang7',
+      name: 'Orcid',
+      url: 'https://orcid.org/0009-0003-6976-0657',
     },
   ],
 
