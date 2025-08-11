@@ -27,6 +27,14 @@ This repository is a personal portfolio site, showcasing my skills, projects, an
    ```sh
    npm start
    ```
+**NOTE:** If you encounter issues while running the application, try the following steps to clear the cache and restart your development server:
+```sh
+npx gatsby clean
+```
+This command removes the `.cache` folder. You’ll need to regenerate it before running:
+```sh
+npx gatsby develop
+```
 
 ## 🚀 Building and Running for Production
 
@@ -58,7 +66,3 @@ This repository is a personal portfolio site, showcasing my skills, projects, an
 ## 👏 Credits
 
 This project is heavily inspired by the work of [Brittany Chiang](https://github.com/bchiang7/v4). Special thanks to her for the design and structure, which was an excellent foundation to build my own personal portfolio.
-
-
-
-4
