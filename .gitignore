@@ -9,5 +9,5 @@ package-lock.json
 .DS_Store
 
 .vscode/
-shortcuts.txt
-test.txt
+**shortcuts**
+**test**

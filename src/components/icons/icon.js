@@ -12,6 +12,7 @@ import {
   IconLinkedin,
   IconLoader,
   IconLogo,
+  IconOrcid,
   IconPlayStore,
   IconStar,
   IconTwitter,
@@ -41,6 +42,8 @@ const Icon = ({ name }) => {
       return <IconLoader />;
     case 'Logo':
       return <IconLogo />;
+    case 'Orcid':
+      return <IconOrcid />;
     case 'PlayStore':
       return <IconPlayStore />;
     case 'Star':
