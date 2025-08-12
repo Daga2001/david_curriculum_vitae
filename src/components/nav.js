@@ -109,6 +109,62 @@ const StyledNav = styled.nav`
   }
 `;
 
+const StyledMobileCVButton = styled.div`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    
+    .mobile-cv-button {
+      ${({ theme }) => theme.mixins.smallButton};
+      font-size: var(--fz-xxs);
+      padding: 8px 12px;
+      background: linear-gradient(45deg, #ff6b35, #f7931e, #ffcc02, #ff6b35) !important;
+      background-size: 400% 400% !important;
+      animation: flameGradient 3s ease infinite, pulse 2s ease-in-out infinite alternate;
+      box-shadow: 0 0 15px rgba(255, 107, 53, 0.5), 0 0 30px rgba(255, 107, 53, 0.3) !important;
+      border: 2px solid #ff6b35 !important;
+      font-weight: bold !important;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      overflow: hidden;
+      position: relative;
+      
+      &:before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        animation: sparkle 4s linear infinite;
+        pointer-events: none;
+      }
+      
+      &:after {
+        content: '🔥';
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        font-size: 12px;
+        animation: flicker 1.5s ease-in-out infinite alternate;
+      }
+      
+      &:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 0 0 20px rgba(255, 107, 53, 0.7), 0 0 40px rgba(255, 107, 53, 0.5) !important;
+        animation: flameGradient 1s ease infinite, pulse 0.5s ease-in-out infinite alternate;
+      }
+    }
+  }
+`;
+
 const StyledLinks = styled.div`
   display: flex;
   align-items: center;
@@ -285,10 +341,19 @@ const Nav = ({ isHome }) => {
     </div>
   );
 
-  const handleResumeDownload = async (e) => {
+  const handleResumeDownload = (e) => {
     e.preventDefault();
-    const { generateResumePDF } = await import('../utils/generatePDF');
-    await generateResumePDF();
+    // Comment: Using static PDF file instead of dynamic generation
+    // const { generateResumePDF } = await import('../utils/generatePDF');
+    // await generateResumePDF();
+    
+    // Download static PDF file
+    const link = document.createElement('a');
+    link.href = '/CV_David_Guzman.pdf';
+    link.download = 'CV_David_Guzman.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const ResumeLink = (
@@ -296,10 +361,19 @@ const Nav = ({ isHome }) => {
       Download My Resume!
     </a>
   );
+  
+  const MobileCVButton = (
+    <StyledMobileCVButton>
+      <a className="mobile-cv-button" href="#" onClick={handleResumeDownload}>
+        Download My Resume!
+      </a>
+    </StyledMobileCVButton>
+  );
 
   return (
     <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
       <StyledNav>
+        {MobileCVButton}
         {prefersReducedMotion ? (
           <>
             {Logo}

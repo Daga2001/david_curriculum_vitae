@@ -346,10 +346,19 @@ const Menu = () => {
               </ol>
             )}
 
-            <a href="#" className="resume-link" onClick={async (e) => {
+            <a href="#" className="resume-link" onClick={(e) => {
               e.preventDefault();
-              const { generateResumePDF } = await import('../utils/generatePDF');
-              await generateResumePDF();
+              // Comment: Using static PDF file instead of dynamic generation
+              // const { generateResumePDF } = await import('../utils/generatePDF');
+              // await generateResumePDF();
+              
+              // Download static PDF file
+              const link = document.createElement('a');
+              link.href = '/CV_David_Guzman.pdf';
+              link.download = 'CV_David_Guzman.pdf';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
             }}>
               Download My Resume!
             </a>
