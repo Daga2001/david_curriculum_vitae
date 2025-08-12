@@ -341,10 +341,19 @@ const Nav = ({ isHome }) => {
     </div>
   );
 
-  const handleResumeDownload = async (e) => {
+  const handleResumeDownload = (e) => {
     e.preventDefault();
-    const { generateResumePDF } = await import('../utils/generatePDF');
-    await generateResumePDF();
+    // Comment: Using static PDF file instead of dynamic generation
+    // const { generateResumePDF } = await import('../utils/generatePDF');
+    // await generateResumePDF();
+    
+    // Download static PDF file
+    const link = document.createElement('a');
+    link.href = '/CV_David_Guzman.pdf';
+    link.download = 'CV_David_Guzman.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const ResumeLink = (
